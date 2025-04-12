@@ -23,24 +23,69 @@
  *
  */
 
-import { teaStructure } from "./data";
-
-const FRESH_PRINCE_URL =
-  "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const CURB_POSTER_URL =
-  "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const EAST_LOS_HIGH_POSTER_URL =
-  "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
-
-// This is an array of strings (TV show titles)
-let titles = [
-  "Fresh Prince of Bel Air",
-  "Curb Your Enthusiasm",
-  "East Los High",
-  "test"
-];
-// Your final submission should have much more data than this, and
-// you should use more than just an array of strings to store it all.
+/**
+ * Here, I am creating my own array of objects for the tea bases.
+ * I am choosing 3 types of tea bases, Oolong, Black and Green. 
+ * For each base I will choose 3 types of teas.
+ * Each tea will have a name, type, a small discription, and a URL (preferably 1200 x 1200)
+ * I also export it to use in scripts.js
+ */
+const teaStructure = [
+  {
+      teaName : "Tie Guan Yin",
+      teaType : "Oolong",
+      teaDisc : "Floral, light, and airy - Often thought of as similar to an orchid.",
+      teaUrl : "https://www.teadealers.com/cdn/shop/products/IMG-5168copy.jpg?v=1664066888"
+  },
+  {
+      teaName : "Jin Xuan",
+      teaType : "Oolong",
+      teaDisc : "Naturally milky, creamy, and buttery.",
+      teaUrl : "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Jin_Xuan_oolong_tea.jpg/1200px-Jin_Xuan_oolong_tea.jpg"
+  },
+  {
+      teaName : "Dan Cong",
+      teaType : "Oolong",
+      teaDisc : "Natural flavors and aroma - Full-bodied, rich, and fragrant.",
+      teaUrl : "https://www.jingteashop.com/cdn/shop/products/oolong-dancong-szdc1.jpg?v=1641104848"
+  },
+  {
+      teaName : "Matcha",
+      teaType : "Green",
+      teaDisc : "A fine powdered tea with a bright, emerald green color and a rich, vegetal taste.",
+      teaUrl : "https://oldbarreltea.com/cdn/shop/products/Matcha_1200x1200.jpg?v=1605636985"
+  },
+  {
+      teaName : "Jasmine",
+      teaType : "Green",
+      teaDisc : "Delicate, floral, and slightly sweet flavor, often enjoyed for its aromatic fragrance and refreshing taste.",
+      teaUrl : "https://oldbarreltea.com/cdn/shop/products/JasmineLooseLeaf_1200x1200.jpg?v=1624483058"
+  },
+  {
+      teaName : "Hojicha",
+      teaType : "Green",
+      teaDisc : "Roasted green tea with a unique, earthy aroma and a distinct flavor profile.",
+      teaUrl : "https://www.nannuoshan.org/cdn/shop/files/T376_IMG_6337_1200x1200.jpg?v=1711989098"
+  },
+  {
+      teaName : "Earl Grey",
+      teaType : "Black",
+      teaDisc : "A black tea blend flavored with bergamot oil, a citrus fruit oil, resulting in a distinctive, citrusy, and often floral taste.",
+      teaUrl : "http://thesteepingroom.com/cdn/shop/files/earl-grey-creme-tea-597477.jpg?v=1720131219"
+  },
+  {
+      teaName : "Red Jade",
+      teaType : "Black",
+      teaDisc : "A deep, rich ruby-colored infusion with a complex flavor that includes notes of mint, cinnamon, and a subtle sweetness.",
+      teaUrl : "https://thejadeleaf.com/cdn/shop/products/IMG_2875.jpg?v=1611684003"
+  },
+  {
+      teaName : "Assam",
+      teaType : "Black",
+      teaDisc : "A robust, malty black tea variety known for its strong flavor and high caffeine content.",
+      teaUrl : "https://cdn11.bigcommerce.com/s-6e1n67clqw/images/stencil/1200x1200/products/26516/320993/yxl7gzyduwqoxqwo5nzj__27286.1738960361.jpg?c=1"
+  }
+]
 
 // This function adds cards the page to display the data in the array
 function showCards() {
@@ -48,27 +93,20 @@ function showCards() {
   cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
 
-  for (let i = 0; i < titles.length; i++) {
-    let title = titles[i];
+  for (let i = 0; i < teaStructure.length; i++) {
+    
+    let title = teaStructure[i].teaName;
+    let imageURL = teaStructure[i].teaUrl;
+    let type = teaStructure[i].teaType;
 
-    // This part of the code doesn't scale very well! After you add your
-    // own data, you'll need to do something totally different here.
-    let imageURL = "";
-    if (i == 0) {
-      imageURL = FRESH_PRINCE_URL;
-    } else if (i == 1) {
-      imageURL = CURB_POSTER_URL;
-    } else if (i == 2) {
-      imageURL = EAST_LOS_HIGH_POSTER_URL;
-    }
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, title, imageURL); // Edit title and image
+    editCardContent(nextCard, title, imageURL, type); // Edit title and image
     cardContainer.appendChild(nextCard); // Add new card to the container
   }
 }
 
-function editCardContent(card, newTitle, newImageURL) {
+function editCardContent(card, newTitle, newImageURL, newType) {
   card.style.display = "block";
 
   const cardHeader = card.querySelector("h2");
@@ -76,7 +114,11 @@ function editCardContent(card, newTitle, newImageURL) {
 
   const cardImage = card.querySelector("img");
   cardImage.src = newImageURL;
-  cardImage.alt = newTitle + " Poster";
+  cardImage.alt = newTitle + " Tea";
+
+  //
+  const teaType = card.querySelector("h3");
+  teaType.textContent = newType;
 
   // You can use console.log to help you debug!
   // View the output by right clicking on your website,
