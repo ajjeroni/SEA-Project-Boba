@@ -23,6 +23,8 @@
  *
  */
 
+import { teaStructure } from "./data";
+
 const FRESH_PRINCE_URL =
   "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
 const CURB_POSTER_URL =

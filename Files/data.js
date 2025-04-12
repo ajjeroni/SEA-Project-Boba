@@ -2,9 +2,10 @@
  * Here, I am creating my own array of objects for the tea bases.
  * I am choosing 3 types of tea bases, Oolong, Black and Green. 
  * For each base I will choose 3 types of teas.
- * Each tea will have a name, type, and small discription. 
+ * Each tea will have a name, type, a small discription, and a URL (preferably 1200 x 1200)
+ * I also export it to use in scripts.js
  */
-const teaStructure = [
+export const teaStructure = [
     {
         teaName : "Tie Guan Yin",
         teaType : "Oolong",
