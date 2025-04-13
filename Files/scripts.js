@@ -95,18 +95,23 @@ function showCards() {
 
   for (let i = 0; i < teaStructure.length; i++) {
     
+    /**
+     * Here, I used the for loop to iterate through all the tea objecys in my array
+     * in order to pass each objects properties to the edit card content function.
+     */
     let title = teaStructure[i].teaName;
     let imageURL = teaStructure[i].teaUrl;
     let type = teaStructure[i].teaType;
+    let disc = teaStructure[i].teaDisc;
 
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, title, imageURL, type); // Edit title and image
+    editCardContent(nextCard, title, imageURL, type, disc); // Edit title and image
     cardContainer.appendChild(nextCard); // Add new card to the container
   }
 }
 
-function editCardContent(card, newTitle, newImageURL, newType) {
+function editCardContent(card, newTitle, newImageURL, newType, newDisc) {
   card.style.display = "block";
 
   const cardHeader = card.querySelector("h2");
@@ -119,6 +124,9 @@ function editCardContent(card, newTitle, newImageURL, newType) {
   //
   const teaType = card.querySelector("h3");
   teaType.textContent = newType;
+
+  const teaDisc = card.querySelector("p");
+  teaDisc.textContent = newDisc;
 
   // You can use console.log to help you debug!
   // View the output by right clicking on your website,
@@ -137,6 +145,6 @@ function quoteAlert() {
 }
 
 function removeLastCard() {
-  titles.pop(); // Remove last item in titles array
+  teaStructure.pop(); // Remove last item in titles array
   showCards(); // Call showCards again to refresh
 }
