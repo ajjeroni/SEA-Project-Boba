@@ -148,3 +148,10 @@ function removeLastCard() {
   teaStructure.pop(); // Remove last item in titles array
   showCards(); // Call showCards again to refresh
 }
+
+/**
+ * Filter feature
+ */
+function filterCards(){
+  
+}
