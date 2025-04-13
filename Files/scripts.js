@@ -101,7 +101,10 @@ function editCardContent(card, newTitle, newImageURL, newType, newDisc) {
   cardImage.src = newImageURL;
   cardImage.alt = newTitle + " Tea";
 
-  //
+  /**
+   * Based on the properties of my tea structure, I added h3 and p elements
+   * to be appended dynamically as well. 
+   */
   const teaType = card.querySelector("h3");
   teaType.textContent = newType + " Tea";
 
