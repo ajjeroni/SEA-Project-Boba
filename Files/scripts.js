@@ -1,29 +1,4 @@
 /**
- * Data Catalog Project Starter Code - SEA Stage 2
- *
- * This file is where you should be doing most of your work. You should
- * also make changes to the HTML and CSS files, but we want you to prioritize
- * demonstrating your understanding of data structures, and you'll do that
- * with the JavaScript code you write in this file.
- *
- * The comments in this file are only to help you learn how the starter code
- * works. The instructions for the project are in the README. That said, here
- * are the three things you should do first to learn about the starter code:
- * - 1 - Change something small in index.html or style.css, then reload your
- *    browser and make sure you can see that change.
- * - 2 - On your browser, right click anywhere on the page and select
- *    "Inspect" to open the browser developer tools. Then, go to the "console"
- *    tab in the new window that opened up. This console is where you will see
- *    JavaScript errors and logs, which is extremely helpful for debugging.
- *    (These instructions assume you're using Chrome, opening developer tools
- *    may be different on other browsers. We suggest using Chrome.)
- * - 3 - Add another string to the titles array a few lines down. Reload your
- *    browser and observe what happens. You should see a fourth "card" appear
- *    with the string you added to the array, but a broken image.
- *
- */
-
-/**
  * Here, I am creating my own array of objects for the tea bases.
  * I am choosing 3 types of tea bases, Oolong, Black and Green. 
  * For each base I will choose 3 types of teas.
@@ -88,21 +63,26 @@ const teaStructure = [
 ]
 
 // This function adds cards the page to display the data in the array
-function showCards() {
+/**
+ * In order to create a filtering function, I thought it would be effecient if I could 
+ * use this show card function to display the filtered teas by changing its parameters to display
+ * the whole array by default, but also display an array that is passed into it when it is called. 
+ */
+function showCards(tea = teaStructure) {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
 
-  for (let i = 0; i < teaStructure.length; i++) {
+  for (let i = 0; i < tea.length; i++) {
     
     /**
      * Here, I used the for loop to iterate through all the tea objecys in my array
      * in order to pass each objects properties to the edit card content function.
      */
-    let title = teaStructure[i].teaName;
-    let imageURL = teaStructure[i].teaUrl;
-    let type = teaStructure[i].teaType;
-    let disc = teaStructure[i].teaDisc;
+    let title = tea[i].teaName;
+    let imageURL = tea[i].teaUrl;
+    let type = tea[i].teaType;
+    let disc = tea[i].teaDisc;
 
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
@@ -123,7 +103,7 @@ function editCardContent(card, newTitle, newImageURL, newType, newDisc) {
 
   //
   const teaType = card.querySelector("h3");
-  teaType.textContent = newType;
+  teaType.textContent = newType + " Tea";
 
   const teaDisc = card.querySelector("p");
   teaDisc.textContent = newDisc;
@@ -135,7 +115,12 @@ function editCardContent(card, newTitle, newImageURL, newType, newDisc) {
 }
 
 // This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
+/**
+ * In order for the show cards function to work properly, I had to change this event 
+ * listener to call the show cards function when the page is opened. It is probably because the 
+ * show cards function now expects a parameter.
+ */
+document.addEventListener("DOMContentLoaded", () => showCards());
 
 function quoteAlert() {
   console.log("Button Clicked!");
@@ -150,8 +135,21 @@ function removeLastCard() {
 }
 
 /**
- * Filter feature
+ * Here, I created a filter function, it recieves a parameter of type string (single quote).
+ * It recieves this parameter through the onClick event filter buttons from the HTML.
+ * This function creates a array that can be dynamically added unto, which is what we need when
+ * iterating through the main tea array in order to match the teaType and parameter string.
+ * If they match then it is pushed into the new array.
+ * Once the iteration is done, the show cards function is called, but now it passes the new array 
+ * of filtered teas.
  */
-function filterCards(){
-  
+function filterCards(typeOfTea){
+  const specificTeaTypeArr = [];
+  teaStructure.forEach(element => {
+      if(element.teaType == typeOfTea){
+        specificTeaTypeArr.push(element);
+      }
+  });
+  showCards(specificTeaTypeArr);
 }
+
