@@ -2,6 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background: linear-gradient(#edd7bf, #f9ecec);
 }
 
 .main-header {
@@ -19,18 +20,54 @@ body {
 }
 
 /*
-Filter feature css
+Filter feature
+Here, I used css to style the filter feature
+component. 
 */
 #Filter {
   float: left;
+  text-align: center;
+  padding: 10px;
+  margin: 26px auto;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+}
+
+#Filter-h2 {
+  font-family: "Helvetica", sans-serif;
+  font-weight: normal;
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#Filter-buttons {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin: 20px;
+  flex-wrap: wrap;
+}
 
+#Filter-buttons button {
+  background-color: #a45c40;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: "Verdana", sans-serif;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+#Filter-buttons button:hover {
+  background-color: #8b4a35;
+  transform: scale(1.05);
 }
 /*
-Made some changes to the card container's css
+Here, I made some changes to the card container's css
 to make them appear in a 3x3 order.
 */
 #card-container {
