@@ -25,7 +25,7 @@ Here, I used css to style the filter feature
 component. 
 */
 #Filter {
-  float: left;
+  
   text-align: center;
   padding: 10px;
   margin: 26px auto;
@@ -46,7 +46,7 @@ component.
 #Filter-buttons {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 30px;
   flex-wrap: wrap;
 }
 
@@ -75,6 +75,7 @@ to make them appear in a 3x3 order.
   grid-template-columns: repeat(3, 1fr);
   padding: 20px;
   margin: 0 auto;
+  justify-items: center;
 }
 
 .card {

@@ -1,9 +1,8 @@
 /**
  * Here, I am creating my own array of objects for the tea bases.
  * I am choosing 3 types of tea bases, Oolong, Black and Green. 
- * For each base I will choose 3 types of teas.
+ * For each base I will choose 4 types of teas.
  * Each tea will have a name, type, a small discription, and a URL (preferably 1200 x 1200)
- * I also export it to use in scripts.js
  */
 const teaStructure = [
   {
@@ -138,21 +137,39 @@ function removeLastCard() {
 }
 
 /**
- * Here, I created a filter function, it recieves a parameter of type string (single quote).
- * It recieves this parameter through the onClick event filter buttons from the HTML.
- * This function creates a array that can be dynamically added unto, which is what we need when
- * iterating through the main tea array in order to match the teaType and parameter string.
+ * Here, I created a filter function.
+ * This function creates an array that can be dynamically added unto
+ * This is what we need when iterating through the main tea array 
+ * in order to match the teaType and parameter string.
  * If they match then it is pushed into the new array.
  * Once the iteration is done, the show cards function is called, but now it passes the new array 
- * of filtered teas.
+ * of filtered teas to display.
  */
-function filterCards(typeOfTea){
+function filterCards(){
   const specificTeaTypeArr = [];
   teaStructure.forEach(element => {
-      if(element.teaType == typeOfTea){
+      if(filterOptionsArray.includes(element.teaType)){
         specificTeaTypeArr.push(element);
       }
   });
   showCards(specificTeaTypeArr);
 }
 
+/**
+ * This array holds the values(Tea type) that will be used
+ * in the filter function.
+ * It is accessed globally and can be dynamically added unto or 
+ * removed. 
+ */
+const filterOptionsArray = []
+
+/**
+ * This function pushes the string value(Tea type) into the 
+ * filter options array and calls the filter function.
+ * The function recieves the parameter(single quote string) from the
+ * html on click event. 
+ */
+function filterAddOptionsArray(typeToFilter){
+  filterOptionsArray.push(typeToFilter);
+  filterCards();
+}
