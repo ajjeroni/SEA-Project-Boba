@@ -17,7 +17,7 @@
         <button id="Oolong" onclick="filterAddOptionsArray('Oolong');">Oolong</button>
         <button id="Green" onclick="filterAddOptionsArray('Green');">Green</button>
         <button id="Black" onclick="filterAddOptionsArray('Black');">Black</button>
-        <button id="All" onclick="showCards()">All</button>
+        <button id="All" onclick="filterAddOptionsArray('All')">All</button>
       </div>
     </div>
     <div id="card-container"></div>
@@ -26,7 +26,25 @@
         <h2>Tea Name</h2>
         <img src="" alt="" />
         <h3>Tea Type</h3>
-        <p>Tea Discription</p>
+        <p>Tea Description</p>
+      </div>
+    </div>
+    <div id="Filter-Toppings">
+      <h2 id="Filter-Toppings-h2">Filter Toppings</h2>
+      <div id="Filter-Toppings-buttons">
+        <button onclick="filterAddOptionsArray2('Refreshing')">Refreshing</button>
+        <button onclick="filterAddOptionsArray2('Chewy')">Chewy</button>
+        <button onclick="filterAddOptionsArray2('Texture Change')">Texture Change</button>
+        <button onclick="filterAddOptionsArray2('All')">All</button>
+      </div>
+    </div>
+    <div id="card-container2"></div>
+    <div class="card2" style="display: none">
+      <div class="card-content">
+        <h2>Topping Name</h2>
+        <img src="" alt="" />
+        <h3>Topping Type</h3>
+        <p>Topping Description</p>
       </div>
     </div>
     <div class="footer">
