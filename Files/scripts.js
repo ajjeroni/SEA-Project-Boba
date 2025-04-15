@@ -163,13 +163,13 @@ const toppingStructure = [
     tea: false,
   },
   {
-    name : "Creama",
-    type : "Texture Change",
-    disc : "The sweetness of the topping balanced with a hint of saltiness, making it a perfect airy layer of topping for any drinks.",
-    url : "https://www.internationaldessertsblog.com/wp-content/uploads/2022/07/Milk-tea-2-1200x1800.jpg",
+    name: "Creama",
+    type: "Texture Change",
+    disc: "The sweetness of the topping balanced with a hint of saltiness, making it a perfect airy layer of topping for any drinks.",
+    url: "https://www.internationaldessertsblog.com/wp-content/uploads/2022/07/Milk-tea-2-1200x1800.jpg",
     rating: 4,
-    tea : false
-  }
+    tea: false,
+  },
 ];
 
 const filters = {
@@ -188,34 +188,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function showCards(other = teaStructure) {
   const cardContainer = document.getElementById("card-container");
-  const templateCard = document.querySelector(".card");
   cardContainer.innerHTML = "";
+  const templateCard = document.querySelector(".card");
 
-  const isTea = other === "teaStructure";
-  const isTopping = other === "toppingStructure";
-
-  const data = isTea ? teaStructure : isTopping ? toppingStructure : other;
-  const handler = isTea ? addTeaToCartArray : isTopping ? addToppingToCartArray : null;
-
-  // Hide "All" button if showing predefined structures
-  const revelation = document.getElementById("all-button");
-  if (isTea || isTopping) revelation.style.display = "none";
-
-  data.forEach((item) => {
-    const { name: title, url: imageURL, type, disc } = item;
-    const nextCard = templateCard.cloneNode(true);
-    editCardContent(nextCard, title, imageURL, type, disc);
-
-    nextCard.addEventListener("click", () => {
-      if (handler) {
-        handler(item);
-      } else {
-        item.tea ? addTeaToCartArray(item) : addToppingToCartArray(item);
-      }
+  if (other == "toppingStructure") {
+    const revelation = document.getElementById("all-button");
+    revelation.style.display = "none";
+    toppingStructure.forEach(element => {
+      const nextCard = templateCard.cloneNode(true);
+      editCardContent(nextCard, element.name, element.url, element.type, element.disc);
+      nextCard.addEventListener("click", () => {
+        addToppingToCartArray(element);
+      });
+      cardContainer.appendChild(nextCard);
     });
-
-    cardContainer.appendChild(nextCard);
-  });
+  } else if (other == "teaStructure") {
+    const revelation = document.getElementById("all-button");
+    revelation.style.display = "none";
+    teaStructure.forEach(element => {
+      const nextCard = templateCard.cloneNode(true);
+      editCardContent(nextCard, element.name, element.url, element.type, element.disc);
+      nextCard.addEventListener("click", () => {
+        addTeaToCartArray(element);
+      });
+      cardContainer.appendChild(nextCard);
+    });
+  } else {
+    other.forEach(element => {
+      const nextCard = templateCard.cloneNode(true);
+      editCardContent(nextCard, element.name, element.url, element.type, element.disc);
+      nextCard.addEventListener("click", () => {
+        if (other.tea) {
+          addTeaToCartArray(element);
+        } else {
+          addToppingToCartArray(element);
+        }
+      });
+      cardContainer.appendChild(nextCard);
+    });
+  }
 }
 
 function editCardContent(card, newTitle, newImageURL, newType, newDisc) {
@@ -282,7 +293,7 @@ function filterCards(type) {
 let cartTeaArray = [];
 function addTeaToCartArray(tea) {
   if (cartTeaArray.length >= 1) {
-    alert("You have a limity of 1 Tea!");
+    alert("You have a limit of 1 Tea base!");
   } else {
     cartTeaArray.push(tea);
     cartArray.unshift(tea);
