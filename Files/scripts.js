@@ -218,7 +218,7 @@ function showCards(other = teaStructure) {
       const nextCard = templateCard.cloneNode(true);
       editCardContent(nextCard, element.name, element.url, element.type, element.disc);
       nextCard.addEventListener("click", () => {
-        if (other.tea) {
+        if (element.tea) {
           addTeaToCartArray(element);
         } else {
           addToppingToCartArray(element);
