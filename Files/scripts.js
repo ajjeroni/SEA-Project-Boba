@@ -211,7 +211,6 @@ function filterAddOptionsArray(typeToFilter) {
 }
 
 let filterOptionsArray = [];
-
 function filterCards() {
   const specifictypeArr = [];
   teaStructure.forEach((element) => {
@@ -223,7 +222,6 @@ function filterCards() {
 }
 
 let cartTeaArray = [];
-
 function addTeaToCartArray(tea) {
   if (cartTeaArray.length > 1) {
     alert("alert");
@@ -234,7 +232,6 @@ function addTeaToCartArray(tea) {
 }
 
 let cartToppingArray = [];
-
 function addToppingToCartArray(topping) {
   if (cartToppingArray.length > 2) {
     alert("alert2");
@@ -243,7 +240,6 @@ function addToppingToCartArray(topping) {
     displayCartArray();
   }
 }
-
 
 let cartArray = [];
 function displayCartArray() {
