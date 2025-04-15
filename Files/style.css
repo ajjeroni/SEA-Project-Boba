@@ -2,78 +2,95 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(#edd7bf, #f9ecec);
+  background: whitesmoke;
 }
 
 .main-header {
-  background-color: rgba(0, 0, 0, 0.3);
-  padding-bottom: 10px;
-}
-
-.title {
-  text-align: center;
-  margin: 0;
-  font-size: 8em;
-  font-family: "Helvetica";
-  font-weight: normal;
-  color: white;
-}
-
-/*
-Filter feature
-Here, I used css to style the filter feature
-component. 
-*/
-#Filter, 
-#Filter-Toppings {
-  
-  text-align: center;
-  padding: 10px;
-  margin: 20px auto;
-  background-color: #f3f3f3;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: fit-content;
-}
-
-#Filter-h2, 
-#Filter-Toppings-h2 {
-  font-family: "Helvetica", sans-serif;
-  font-weight: normal;
-  font-size: 2em;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-#Filter-buttons, 
-#Filter-Toppings-buttons {
   display: flex;
-  justify-content: center;
-  gap: 30px;
+  align-items: center;
+  background-color: #c8a77b;
+  padding: 10px 40px;
+}
+
+.bear-icon {
+  height: 80px;
+  width: auto;
+  margin: 0 300px;
+}
+
+.shop-title {
+  font-family: "Helvetica", sans-serif;
+  font-size: 2.5em;
+  font-weight: bold;
+  color: black;
+  margin: 0;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 20px 40px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   flex-wrap: wrap;
 }
 
-#Filter-buttons button, 
-#Filter-Toppings-buttons button {
-  background-color: #a45c40;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-family: "Verdana", sans-serif;
+.left-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.left-buttons button {
+  background-color: white;
+  border: 2px solid black;
   border-radius: 8px;
+  padding: 10px 16px;
+  font-family: "Verdana", sans-serif;
+  font-size: 16px;
+  color: #000000;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
-#Filter-buttons button:hover, 
-#Filter-Toppings-buttons button:hover {
-  background-color: #8b4a35;
+.left-buttons button:hover {
+  background-color: #f3f3f3;
   transform: scale(1.05);
 }
+
+.filter-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-section span {
+  font-size: 18px;
+  font-family: "Helvetica", sans-serif;
+  font-weight: bold;
+}
+
+.filter-section button {
+  background-color: white;
+  border: 1.5px solid black;
+  padding: 8px 14px;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Verdana", sans-serif;
+  color: #000000;
+}
+
+.filter-section button:hover {
+  background-color: #ddd;
+}
+
+
 /*
-Here, I made some changes to the card container's css
-to make them appear in a 3x3 order.
+
 */
 #card-container,
 #card-container2 {
@@ -91,12 +108,13 @@ to make them appear in a 3x3 order.
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 5px;
+  background-color: #c8a77b;
 }
 
 .card-content {
   padding: 20px;
   font-family: "Verdana";
-  color: #777;
+  color: #000000;
 }
 
 .card-content h2 {

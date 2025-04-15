@@ -6,45 +6,32 @@
     <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="scripts.js"></script>
   </head>
-
   <body>
     <header class="main-header">
-      <h1 class="title">Welcome to Adan's Boba Shop!</h1>
+      <img src="images/image 6.png" alt="Bear Left" class="bear-icon" />
+      <h1 class="shop-title">Adan’s Boba Shop</h1>
+      <img src="images/image 7.png" alt="Bear Right" class="bear-icon" />
     </header>
-    <div id="Filter">
-      <h2 id="Filter-h2">Filter Tea Types</h2>
-      <div id="Filter-buttons">
-        <button id="Oolong" onclick="filterAddOptionsArray('Oolong');">Oolong</button>
-        <button id="Green" onclick="filterAddOptionsArray('Green');">Green</button>
-        <button id="Black" onclick="filterAddOptionsArray('Black');">Black</button>
-        <button id="All" onclick="filterAddOptionsArray('All')">All</button>
+    <div class="top-bar">
+      <div class="left-buttons">
+        <button onclick="showCards()">Teas ☕</button>
+        <button onclick="showCards('toppingStructure')">Toppings 🍬</button>
+      </div>
+      <div class="filter-section">
+        <span>Filter by:</span>
+        <button onclick="filterAddOptionsArray('Oolong')">Oolong</button>
+        <button onclick="filterAddOptionsArray('Green')">Green</button>
+        <button onclick="filterAddOptionsArray('Black')">Black</button>
+        <button onclick="filterAddOptionsArray('All')">All</button>
       </div>
     </div>
     <div id="card-container"></div>
     <div class="card" style="display: none">
       <div class="card-content">
-        <h2>Tea Name</h2>
+        <h2>Name</h2>
         <img src="" alt="" />
-        <h3>Tea Type</h3>
-        <p>Tea Description</p>
-      </div>
-    </div>
-    <div id="Filter-Toppings">
-      <h2 id="Filter-Toppings-h2">Filter Toppings</h2>
-      <div id="Filter-Toppings-buttons">
-        <button onclick="filterAddOptionsArray2('Refreshing')">Refreshing</button>
-        <button onclick="filterAddOptionsArray2('Chewy')">Chewy</button>
-        <button onclick="filterAddOptionsArray2('Texture Change')">Texture Change</button>
-        <button onclick="filterAddOptionsArray2('All')">All</button>
-      </div>
-    </div>
-    <div id="card-container2"></div>
-    <div class="card2" style="display: none">
-      <div class="card-content">
-        <h2>Topping Name</h2>
-        <img src="" alt="" />
-        <h3>Topping Type</h3>
-        <p>Topping Description</p>
+        <h3>Type</h3>
+        <p>Description</p>
       </div>
     </div>
     <div class="footer">
