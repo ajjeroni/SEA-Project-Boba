@@ -16,11 +16,10 @@
   </header>
   <div class="top-bar">
     <div class="left-buttons">
-      <button onclick="showCards('teaStructure')">Teas ☕</button>
-      <button onclick="showCards('toppingStructure')">Toppings 🍬</button>
+      <button onclick="showCards('teaStructure'); showFilter('tea')" >Teas ☕</button>
+      <button onclick="showCards('toppingStructure'); showFilter('topping')">Toppings 🍬</button>
     </div>
-    <div id="filter-section">
-      <button class="filter-button" style="display:none;">Template</button>
+    <div id="filter-container">
     </div>
   </div>
 
