@@ -1,54 +1,60 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Boba Shop | Home</title>
-    <meta name="description" content="A Catalog for Bubble tea enthusiasts" />
-    <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="scripts.js"></script>
-  </head>
-  <body>
-    <header class="main-header">
-      <img src="images/image 6.png" alt="Bear Left" class="bear-icon" />
-      <h1 class="shop-title">Adan's Boba Shop</h1>
-      <img src="images/image 7.png" alt="Bear Right" class="bear-icon" />
-    </header>
-    <div class="top-bar">
-      <div class="left-buttons">
-        <button onclick="showCards('teaStructure')">Teas ☕</button>
-        <button onclick="showCards('toppingStructure')">Toppings 🍬</button>
-      </div>
-      <div id="filter-section">
-        <button class="filter-button" style="display:none;">Template</button>
-      </div>
-    </div>
 
-    <div id="card-container"></div>
-    <div class="card" style="display: none">
-      <div class="card-content">
-        <h2>Name</h2>
-        <img src="" alt="" />
-        <h3>Type</h3>
-        <p>Description</p>
-      </div>
-    </div>
+<head>
+  <title>Boba Shop | Home</title>
+  <meta name="description" content="A Catalog for Bubble tea enthusiasts" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="text/javascript" src="scripts.js"></script>
+</head>
 
-    <div id="cart">
-      <h2>Cart</h2>
+<body>
+  <header class="main-header">
+    <img src="images/image 6.png" alt="Bear Left" class="bear-icon" />
+    <h1 class="shop-title">Adan's Boba Shop</h1>
+    <img src="images/image 7.png" alt="Bear Right" class="bear-icon" />
+  </header>
+  <div class="top-bar">
+    <div class="left-buttons">
+      <button onclick="showCards('teaStructure')">Teas ☕</button>
+      <button onclick="showCards('toppingStructure')">Toppings 🍬</button>
     </div>
-    <button onclick="removeTeaFromCart()">remove tea</button>
-    <button onclick="removeToppingFromCart()">remove topping</button>
-    <button onclick="cartRating()">Adan's Rating</button>
+    <div id="filter-section">
+      <button class="filter-button" style="display:none;">Template</button>
+    </div>
+  </div>
+
+  <div id="card-container"></div>
+  <div class="card" style="display: none">
+    <div class="card-content">
+      <h2>Name</h2>
+      <img src="" alt="" />
+      <h3>Type</h3>
+      <p>Description</p>
+    </div>
+  </div>
+
+  <div id="cart-section">
+    <h2>Cart</h2>
+    <div class="cart-buttons">
+      <button onclick="removeTeaFromCart()">Remove Tea</button>
+      <button onclick="removeToppingFromCart()">Remove Topping</button>
+      <button onclick="cartRating()">Adan's Rating</button>
+    </div>
     <div id="card-container-cart"></div>
-      <div class="card" style="display: none">
-        <div class="card-content">
-          <h2>Name</h2>
-          <img src="" alt="" />
-          <h3>Type</h3>
-          <p>Description</p>
-        </div>
-      </div>
-      <div id="card-container-cart"></div>
+  </div>
 
-    <div class="footer"></div>
-  </body>
+  <div id="card-container-cart"></div>
+  <div class="card2" style="display: none">
+    <div class="card-content">
+      <h2>Name</h2>
+      <img src="" alt="" />
+      <h3>Type</h3>
+      <p>Description</p>
+    </div>
+  </div>
+
+  <div class="footer"></div>
+</body>
+
 </html>

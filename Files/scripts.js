@@ -142,9 +142,12 @@ const teaFilters = ["Oolong", "Green", "Black", "All"];
 
 const toppingFilters = ["Refreshing", "Chewy", "Texture Change", "All"];
 
+//-------------------------------------------------------------------------------------------------
+
 document.addEventListener("DOMContentLoaded", () => {
   showCards("teaStructure");
 });
+
 
 function showCards(other = teaStructure) {
   const cardContainer = document.getElementById("card-container");
@@ -161,7 +164,6 @@ function showCards(other = teaStructure) {
       const nextCard = templateCard.cloneNode(true);
       editCardContent(nextCard, title, imageURL, type, disc);
       nextCard.addEventListener("click", () => {
-        // cartToppingArray.push(toppingStructure[i]);
         addToppingToCartArray(toppingStructure[i]);
       });
       cardContainer.appendChild(nextCard);
@@ -176,7 +178,6 @@ function showCards(other = teaStructure) {
       const nextCard = templateCard.cloneNode(true);
       editCardContent(nextCard, title, imageURL, type, disc);
       nextCard.addEventListener("click", () => {
-        // cartTeaArray.push(teaStructure[i]);
         addTeaToCartArray(teaStructure[i]);
       });
       cardContainer.appendChild(nextCard);
@@ -268,7 +269,7 @@ let cartArray = [];
 function displayCartArray() {
   const cardContainer = document.getElementById("card-container-cart");
   cardContainer.innerHTML = "";
-  const templateCard = document.querySelector(".card");
+  const templateCard = document.querySelector(".card2");
 
   cartArray.forEach((element) => {
     let title = element.name;
@@ -287,7 +288,7 @@ function displayCartArray() {
  * -remove from cart \
  * -add rating to each card \
  * -total is the average of the sum \
- * Css no hover over cart items. 
+ * - Css no hover over cart items. \
  * -filter buttons
  */
 
@@ -314,6 +315,8 @@ function removeToppingFromCart() {
 function cartRating() {
   if (cartArray.length === 0) {
     alert("Nothing in Cart")
+  } else if (cartTeaArray.length === 0) {
+    alert("Please choose a Tea!")
   } else {
     let sum = 0.0;
     let average = 0.0;
