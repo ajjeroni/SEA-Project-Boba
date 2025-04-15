@@ -9,22 +9,19 @@
   <body>
     <header class="main-header">
       <img src="images/image 6.png" alt="Bear Left" class="bear-icon" />
-      <h1 class="shop-title">Adan’s Boba Shop</h1>
+      <h1 class="shop-title">Adan's Boba Shop</h1>
       <img src="images/image 7.png" alt="Bear Right" class="bear-icon" />
     </header>
     <div class="top-bar">
       <div class="left-buttons">
-        <button onclick="showCards()">Teas ☕</button>
+        <button onclick="showCards('teaStructure')">Teas ☕</button>
         <button onclick="showCards('toppingStructure')">Toppings 🍬</button>
       </div>
-      <div class="filter-section">
-        <span>Filter by:</span>
-        <button onclick="filterAddOptionsArray('Oolong')">Oolong</button>
-        <button onclick="filterAddOptionsArray('Green')">Green</button>
-        <button onclick="filterAddOptionsArray('Black')">Black</button>
-        <button onclick="filterAddOptionsArray('All')">All</button>
+      <div id="filter-section">
+        <button class="filter-button" style="display:none;">Template</button>
       </div>
     </div>
+
     <div id="card-container"></div>
     <div class="card" style="display: none">
       <div class="card-content">
@@ -34,9 +31,21 @@
         <p>Description</p>
       </div>
     </div>
-    <div class="footer">
-      <button onclick="quoteAlert();">Get A Quote!</button>
-      <button onclick="removeLastCard();">Remove A Card!</button>
+
+    <div>
+      <h2>Cart</h2>
     </div>
+    <div id="card-container-cart"></div>
+      <div class="card" style="display: none">
+        <div class="card-content">
+          <h2>Name</h2>
+          <img src="" alt="" />
+          <h3>Type</h3>
+          <p>Description</p>
+        </div>
+      </div>
+      <div id="card-container-cart"></div>
+
+    <div class="footer"></div>
   </body>
 </html>
