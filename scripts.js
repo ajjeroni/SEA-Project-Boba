@@ -276,16 +276,22 @@ function showFilter(type) {
   });
 }
 
-function filterCards(type) {
-  if (teaStructure.some((item) => item.type === type)) {
-    const specifictypeArr = teaStructure.filter((item) => item.type === type);
-    showCards(specifictypeArr);
+function filterCards(typeToCheck) {
+  let specifictypeArr = [];
+  if (teaStructure.some((item) => item.type === typeToCheck)) {
+    teaStructure.forEach(element => {
+      if(element.type === typeToCheck){
+        specifictypeArr.push(element);
+      }
+    });
   } else {
-    const specifictypeArr = toppingStructure.filter(
-      (item) => item.type === type
-    );
-    showCards(specifictypeArr);
+    toppingStructure.forEach(element => {
+      if(element.type === typeToCheck){
+        specifictypeArr.push(element);
+      }
+    });
   }
+  showCards(specifictypeArr);
 }
 
 //-------------------------------------------------------------------------------------------------------------//
@@ -321,13 +327,8 @@ function displayCartArray() {
   const templateCard = document.querySelector(".card2");
 
   cartArray.forEach((element) => {
-    let title = element.name;
-    let imageURL = element.url;
-    let type = element.type;
-    let disc = element.disc;
-
     const nextCard = templateCard.cloneNode(true);
-    editCardContent(nextCard, title, imageURL, type, disc);
+    editCardContent(nextCard, element.name, element.url, element.type, element.disc);
     cardContainer.appendChild(nextCard);
   });
 }
