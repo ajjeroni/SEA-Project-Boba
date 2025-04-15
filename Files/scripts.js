@@ -79,6 +79,14 @@ const teaStructure = [
     rating: 3.2,
     tea: true,
   },
+  {
+    name: "Ceylon",
+    type: "Black",
+    disc: "Known for its brisk and flavorful character, often described as having notes of citrus and spice.",
+    url: "https://steepmtntea.com/cdn/shop/files/SingleEstateCeyolonLeaf-corrected.jpg?v=1727189687v",
+    rating: 3,
+    tea: true,
+  },
 ];
 
 const toppingStructure = [
@@ -149,11 +157,19 @@ const toppingStructure = [
   {
     name: "Ice Cream",
     type: "Texture Change",
-    disc: "Ice cream topping makes the bubble tea sweeter and colder. As the ice cream melts, you get different textures of the drinks making it richer and creamier.",
+    disc: "Ice cream topping makes the bubble tea sweeter and colder, you get different textures of the drinks making it richer and creamier.",
     url: "https://nutritionrefined.com/wp-content/uploads/2018/07/vegan-vanilla-ice-cream-featured.jpg",
     rating: 3.5,
     tea: false,
   },
+  {
+    name : "Creama",
+    type : "Texture Change",
+    disc : "The sweetness of the topping balanced with a hint of saltiness, making it a perfect airy layer of topping for any drinks.",
+    url : "https://www.internationaldessertsblog.com/wp-content/uploads/2022/07/Milk-tea-2-1200x1800.jpg",
+    rating: 4,
+    tea : false
+  }
 ];
 
 const filters = {
@@ -172,61 +188,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function showCards(other = teaStructure) {
   const cardContainer = document.getElementById("card-container");
-  cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
+  cardContainer.innerHTML = "";
 
-  if (other == "toppingStructure") {
-    const revelation = document.getElementById("all-button");
-    revelation.style.display = "none";
-    for (let i = 0; i < toppingStructure.length; i++) {
-      let title = toppingStructure[i].name;
-      let imageURL = toppingStructure[i].url;
-      let type = toppingStructure[i].type;
-      let disc = toppingStructure[i].disc;
+  const isTea = other === "teaStructure";
+  const isTopping = other === "toppingStructure";
 
-      const nextCard = templateCard.cloneNode(true);
-      editCardContent(nextCard, title, imageURL, type, disc);
-      nextCard.addEventListener("click", () => {
-        addToppingToCartArray(toppingStructure[i]);
-      });
-      cardContainer.appendChild(nextCard);
-    }
-  } else if (other == "teaStructure") {
-    const revelation = document.getElementById("all-button");
-    revelation.style.display = "none";
-    for (let i = 0; i < teaStructure.length; i++) {
-      let title = teaStructure[i].name;
-      let imageURL = teaStructure[i].url;
-      let type = teaStructure[i].type;
-      let disc = teaStructure[i].disc;
+  const data = isTea ? teaStructure : isTopping ? toppingStructure : other;
+  const handler = isTea ? addTeaToCartArray : isTopping ? addToppingToCartArray : null;
 
-      const nextCard = templateCard.cloneNode(true);
-      editCardContent(nextCard, title, imageURL, type, disc);
-      nextCard.addEventListener("click", () => {
-        addTeaToCartArray(teaStructure[i]);
-      });
-      cardContainer.appendChild(nextCard);
-    }
-  } else {
-    for (let i = 0; i < other.length; i++) {
-      let title = other[i].name;
-      let imageURL = other[i].url;
-      let type = other[i].type;
-      let disc = other[i].disc;
-      let tea = other[i].tea;
+  // Hide "All" button if showing predefined structures
+  const revelation = document.getElementById("all-button");
+  if (isTea || isTopping) revelation.style.display = "none";
 
-      const nextCard = templateCard.cloneNode(true);
-      editCardContent(nextCard, title, imageURL, type, disc);
-      nextCard.addEventListener("click", () => {
-        if (tea) {
-          addTeaToCartArray(other[i]);
-        } else {
-          addToppingToCartArray(other[i]);
-        }
-      });
-      cardContainer.appendChild(nextCard);
-    }
-  }
+  data.forEach((item) => {
+    const { name: title, url: imageURL, type, disc } = item;
+    const nextCard = templateCard.cloneNode(true);
+    editCardContent(nextCard, title, imageURL, type, disc);
+
+    nextCard.addEventListener("click", () => {
+      if (handler) {
+        handler(item);
+      } else {
+        item.tea ? addTeaToCartArray(item) : addToppingToCartArray(item);
+      }
+    });
+
+    cardContainer.appendChild(nextCard);
+  });
 }
 
 function editCardContent(card, newTitle, newImageURL, newType, newDisc) {
@@ -368,11 +357,16 @@ function cartRating() {
       sum += element.rating;
     });
     average = sum / cartArray.length;
-    if(average >= 4){
-      alert("You definitely have good taste! We should go out for some boba sometime.");
-    }else if(3 <= average && average > 4){
-      alert("Not bad! But I think we have different taste buds... yours just need a little training.");
-    }else{
+    console.log(average);
+    if (average >= 4) {
+      alert(
+        "You definitely have good taste! We should go out for some boba sometime."
+      );
+    } else if (average >= 3 && average < 4) {
+      alert(
+        "Not bad! But I think we have different taste buds... yours just need a little training."
+      );
+    } else {
       alert("We need to talk...");
     }
   }

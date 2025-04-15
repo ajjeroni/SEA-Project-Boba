@@ -152,7 +152,7 @@ body {
 
 #card-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   padding: 20px 350px;
   margin: 0 auto;
   justify-items: center;
@@ -171,6 +171,7 @@ body {
 .card-content {
   padding: 20px;
   font-family: "Verdana";
+  font-size: small;
   color: #000000;
 }
 
@@ -181,7 +182,8 @@ body {
 
 .card-content img {
   width: 100%;
-  height: auto;
+  height: 100px;
+  object-fit: cover;
 }
 
 #card-container-cart {
