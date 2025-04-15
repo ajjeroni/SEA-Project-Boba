@@ -158,7 +158,7 @@ const toppingStructure = [
 
 const filters = {
   tea: ["Oolong", "Green", "Black"],
-  topping: ["Refreshing", "Chewy", "Texture Change"]
+  topping: ["Refreshing", "Chewy", "Texture Change"],
 };
 
 //-------------------------------------------------------------------------------------------------//
@@ -168,10 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
   showFilter("tea");
 });
 
-/**
- * Functionality:
- * -filter buttons
- */
+//--------------------------------------------------------------------------------------------------//
 
 function showCards(other = teaStructure) {
   const cardContainer = document.getElementById("card-container");
@@ -179,6 +176,8 @@ function showCards(other = teaStructure) {
   const templateCard = document.querySelector(".card");
 
   if (other == "toppingStructure") {
+    const revelation = document.getElementById("all-button");
+    revelation.style.display = "none";
     for (let i = 0; i < toppingStructure.length; i++) {
       let title = toppingStructure[i].name;
       let imageURL = toppingStructure[i].url;
@@ -193,6 +192,8 @@ function showCards(other = teaStructure) {
       cardContainer.appendChild(nextCard);
     }
   } else if (other == "teaStructure") {
+    const revelation = document.getElementById("all-button");
+    revelation.style.display = "none";
     for (let i = 0; i < teaStructure.length; i++) {
       let title = teaStructure[i].name;
       let imageURL = teaStructure[i].url;
@@ -216,7 +217,6 @@ function showCards(other = teaStructure) {
 
       const nextCard = templateCard.cloneNode(true);
       editCardContent(nextCard, title, imageURL, type, disc);
-      console.log(title);
       nextCard.addEventListener("click", () => {
         if (tea) {
           addTeaToCartArray(other[i]);
@@ -247,6 +247,19 @@ function editCardContent(card, newTitle, newImageURL, newType, newDisc) {
 }
 
 //-----------------------------------------------------------------------------------------------------------//
+function revealAllButton(type) {
+  const revelation = document.getElementById("all-button");
+  revelation.style.display = "block";
+  revelation.addEventListener("click", () => {
+    if (teaStructure.some((item) => item.type === type)) {
+      showCards("teaStructure");
+    } else {
+      showCards("toppingStructure");
+    }
+    revelation.style.display = "none";
+  });
+}
+
 function showFilter(type) {
   const filterContainer = document.getElementById("filter-container");
   filterContainer.innerHTML = "";
@@ -256,7 +269,7 @@ function showFilter(type) {
     const button = document.createElement("button");
     button.textContent = element;
     button.addEventListener("click", () => {
-      console.log(element);
+      revealAllButton(element);
       filterCards(element);
     });
     filterContainer.appendChild(button);
@@ -264,14 +277,15 @@ function showFilter(type) {
 }
 
 function filterCards(type) {
-  if(teaStructure.some(item => item.type === type)){
-    const specifictypeArr = teaStructure.filter(item => item.type === type);
+  if (teaStructure.some((item) => item.type === type)) {
+    const specifictypeArr = teaStructure.filter((item) => item.type === type);
     showCards(specifictypeArr);
-  }else{
-    const specifictypeArr = toppingStructure.filter(item => item.type === type);
+  } else {
+    const specifictypeArr = toppingStructure.filter(
+      (item) => item.type === type
+    );
     showCards(specifictypeArr);
   }
-  
 }
 
 //-------------------------------------------------------------------------------------------------------------//
@@ -318,6 +332,8 @@ function displayCartArray() {
   });
 }
 
+//--------------------------------------------------------------------------------------------------------------------//
+
 function removeTeaFromCart() {
   if (cartTeaArray.length === 0) {
     alert("You have no Tea!");
@@ -338,6 +354,8 @@ function removeToppingFromCart() {
   }
 }
 
+//--------------------------------------------------------------------------------------------------------------------//
+
 function cartRating() {
   if (cartArray.length === 0) {
     alert("Nothing in Cart");
@@ -350,6 +368,12 @@ function cartRating() {
       sum += element.rating;
     });
     average = sum / cartArray.length;
-    console.log(average);
+    if(average >= 4){
+      alert("You definitely have good taste! We should go out for some boba sometime.");
+    }else if(3 <= average && average > 4){
+      alert("Not bad! But I think we have different taste buds... yours just need a little training.");
+    }else{
+      alert("We need to talk...");
+    }
   }
 }
