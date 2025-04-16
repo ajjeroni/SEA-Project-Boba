@@ -1,10 +1,7 @@
 /**
- * Here, I create my own array of objects for the tea bases.
- * I am choosing 3 types of tea bases, Oolong, Black and Green.
- * For each base I will choose 3 types of teas.
- * Each tea will have a name, type, a small discription, and a URL.
- * Similarly, I create another array of objects for the toppings.
- * They have similar properties as the tea bases.
+ * Here, I create my own array of objects.
+ * For the tea bases I am choosing 3 types of tea bases, Oolong, Black and Green.
+ * Each tea will have a name, type, a small discription, a URL, a rating, and a boolean value. 
  */
 const teaStructure = [
   {
@@ -89,6 +86,10 @@ const teaStructure = [
   },
 ];
 
+/**
+ * Similarly, I create another array of objects for the toppings.
+ * They have similar properties as the tea bases.
+ */
 const toppingStructure = [
   {
     name: "Aloe Vera",
@@ -172,12 +173,18 @@ const toppingStructure = [
   },
 ];
 
+/**
+ * My last data structure is a dictionary-like object. 
+ * With its key being a category, 
+ * and its values are the array of strings for that category.
+ */
 const filters = {
   tea: ["Oolong", "Green", "Black"],
   topping: ["Refreshing", "Chewy", "Texture Change"],
 };
 
 //-------------------------------------------------------------------------------------------------//
+//After the DOM is loaded these functions are called, tea is default. 
 
 document.addEventListener("DOMContentLoaded", () => {
   showCards("teaStructure");
@@ -185,6 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //--------------------------------------------------------------------------------------------------//
+//Section that manages the display of cards.
 
 function showCards(other = teaStructure) {
   const cardContainer = document.getElementById("card-container");
@@ -247,6 +255,8 @@ function editCardContent(card, newTitle, newImageURL, newType, newDisc) {
 }
 
 //-----------------------------------------------------------------------------------------------------------//
+//Section that manages filter buttons display and filter buttons functionality.
+
 function revealAllButton(type) {
   const revelation = document.getElementById("all-button");
   revelation.style.display = "block";
@@ -295,6 +305,7 @@ function filterCards(typeToCheck) {
 }
 
 //-------------------------------------------------------------------------------------------------------------//
+//Section that manages the display of the cart cards.
 
 let cartTeaArray = [];
 function addTeaToCartArray(tea) {
@@ -333,7 +344,8 @@ function displayCartArray() {
   });
 }
 
-//--------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------//
+//Section that manages the cart buttons functionality.
 
 function removeTeaFromCart() {
   if (cartTeaArray.length === 0) {
@@ -354,8 +366,6 @@ function removeToppingFromCart() {
     displayCartArray();
   }
 }
-
-//--------------------------------------------------------------------------------------------------------------------//
 
 function cartRating() {
   if (cartArray.length === 0) {
